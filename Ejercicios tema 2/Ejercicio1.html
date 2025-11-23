@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios js 2.1</title>
+</head>
+<body>
+    <h1>Bienvenido a mi crea-Arrays</h1>
+    <label for="numero">Tu número aquí:</label>
+    <input type="number" id="numero">
+
+    <input type="button" value="Añadir al array" onclick="añadir()">
+    <input type="button" value="Calcular la media del array" onclick = 'calcular()'>
+    <input type="button" value="Limpiar el array" onclick="limpiar()">
+    
+  <script lang="javascript">
+   var numeros = []; 
+   function añadir(){
+     let numero = document.getElementById('numero').value;
+     if(isNaN(numero) || numero < 0){
+        alert ('No es un numero o es menor que 0');
+        return;
+     }else{
+      numeros.push(Number(numero)); //si no se pasa a number concatena en vez de sumar
+      document.getElementById('numero').value = "";
+     }
+    console.log(numeros);
+   }
+   function calcular(){
+    var resultado = 0;
+    var numeroTotal = 0;
+    for(i = 0; i < numeros.length; i++){
+        resultado =  resultado + numeros[i] ;
+        numeroTotal++
+    }
+    resultado = resultado / numeroTotal;
+    alert('La media de tu array es ' + resultado);
+   }
+   function limpiar(){
+    numeros = [];
+    console.log(numeros);
+   }
+  </script>
+  
+
+
+</body>
+</html>

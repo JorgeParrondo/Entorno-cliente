@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2.2</title>
+</head>
+<body>
+    Voy a elegir una letra aleatoria del texto que me des
+    <input type="text" name="miPalabra" id="Palabra">
+    <input type="button" value="Elegir letra" onclick="elegirLetra()">
+
+    <script>
+        function elegirLetra(){
+            let texto = document.getElementById('Palabra').value;
+            texto =  texto.trim();
+            letra = Math.floor(Math.random() * texto.length);
+            texto = texto.charAt(letra);
+            console.log(texto);
+            //se podria hacer un while de mientras letra sea = " " que se siga seleccionando para evitar que el programa devuelva una letra en blanco
+        }
+    </script>
+</body>
+</html>
