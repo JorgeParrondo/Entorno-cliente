@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2.3</title>
+</head>
+<body>
+     Pon aqui tu queso preferido: <input type="text" name="queso" id="queso"> <br>
+    <input type="button" value="ENVIAR QUESO" onclick="elegirQueso()"> <br>
+     Tu queso preferido es: <textarea name="muestraQueso" id="muestraQueso" cols="30" rows="10"></textarea>
+    <script lang="javascript">
+       var miCadena = "cabrales, torta del casar, idiazabal";
+       function elegirQueso(){
+         let quesito = document.getElementById('queso').value;
+         numero = miCadena.indexOf(quesito);
+         if(miCadena.indexOf(quesito) == -1){
+            alert('tu queso no esta registrado aqui o no has puesto un queso');
+         }else{
+          document.getElementById('muestraQueso').value = quesito;
+          alert('tu queso empieza en el caracter ' + numero + ' de la cadena');
+         }
+       }        
+    </script>
+</body>
+</html>
