@@ -20,15 +20,15 @@
 		let clave = document.getElementById('clave').value;
 		let numero = parseInt(document.getElementById('valorCesar').value);
 
-		if (!userText || isNan(numero) || numero <= 0){
+		if (!clave || isNaN(numero) || numero <= 0){
             alert('valores incorrectos');
             return ;
         }
 			
 
 		for (let i = 0; i < clave.length; i++){
-			let letter = userText.charCodeAt(i) + user; //charCodeAt devuelve el numero del ASCII
-			code += String.fromCharCode(letter); //fromCharCode pasa el numero a su valor del ASCII 
+			let letra = clave.charCodeAt(i) + numero; //charCodeAt devuelve el numero del ASCII
+			resultado += String.fromCharCode(letra); //fromCharCode pasa el numero a su valor del ASCII 
 		}
 		alert(resultado);
 	}
