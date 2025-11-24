@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <textarea id="valor_inicial" cols="30" rows="1"></textarea>
+
+     <script>
+        function generarCodigo(){
+            codigo = "";   
+
+            for(let i = 0; i < 8; i++){
+                let letra = 0;
+
+                // generar letra válida entre 65 y 122 EXCLUYENDO 91–96
+                while (letra < 65 || letra > 122 || (letra >= 91 && letra <= 96)) {
+                    letra = Math.floor(Math.random() * (122 - 65 + 1)) + 65;
+                }
+
+                codigo += String.fromCharCode(letra);
+            }
+
+            document.getElementById('valor_inicial').value = codigo;
+        }
+
+        generarCodigo();
+     </script>
+</body>
+</html>
