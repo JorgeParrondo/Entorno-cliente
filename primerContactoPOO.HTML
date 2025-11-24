@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="MOSTRAR" onclick ="muestrameColor()">
+    <script lang="javascript">
+        let Coche = class coche{
+            constructor(marca, km, color){
+                 this.marca = marca;//this va a la izquierda IMPORTANTE
+                 this.km = km;
+                 this.color = color;
+            }
+        }
+    let c1 = new Coche('toyota', 100, 'verde');
+    function muestrameColor(){
+      alert('El color del coche es ' + c1.color);
+    }
+    
+    </script>
+</body>
+</html>
