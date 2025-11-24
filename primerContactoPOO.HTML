@@ -7,15 +7,24 @@
 </head>
 <body>
     <input type="button" value="MOSTRAR" onclick ="muestrameColor()">
+    <input type="button" value="TOCAR EL CLAXON" onclick="claxon()">
+
+
     <script lang="javascript">
         let Coche = class coche{
-            constructor(marca, km, color){
+            constructor(marca, km, color, bocina){
                  this.marca = marca;//this va a la izquierda IMPORTANTE
                  this.km = km;
                  this.color = color;
+                 this.bocina = bocina;
             }
+
+            metodoClaxon(bocina){
+               alert(bocina)
+            }
+
         }
-        let c1 = new Coche('toyota', 100, 'verde');
+        let c1 = new Coche('toyota', 100, 'verde', 'pi piiii');
         //CLASES ANONIMAS
         let persona = class{
             constructor(nombre, edad){
@@ -27,6 +36,9 @@
     function muestrameColor(){
       alert('El color del coche es ' + c1.color);
       console.log(p1.nombre + p1.edad);
+    }
+    function claxon(){
+        c1.metodoClaxon(c1.bocina);
     }
     
 
