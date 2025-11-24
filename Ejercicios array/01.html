@@ -1,0 +1,29 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>array 1</title>
+    </head>
+    <body>
+        <h1>A eliminar arrays repetidos...</h1>
+        array:  4,0,3,4,7,3,5,8,1,8,8,0,2,3,1,2,5,7,3,2,5,1
+
+
+        <script lang="javascript">
+            let miArray = [4,0,3,4,7,3,5,8,1,8,8,0,2,3,1,2,5,7,3,2,5,1];
+            function eliminarRepetidos(){
+                miArray.sort((a,b) => a - b); //primero ordenamos el array.
+                for(let i = 0; i<miArray.length;i++){ //recorremos miArray
+                if (miArray[i] == miArray[(i - 1)]){
+                    miArray.splice(i,1);//todos los elementos se mueven una posición  a la izquierda
+                    i--;
+                }
+                }
+                console.log(miArray);
+            }
+
+        eliminarRepetidos();
+        </script>
+    </body>
+    </html>
