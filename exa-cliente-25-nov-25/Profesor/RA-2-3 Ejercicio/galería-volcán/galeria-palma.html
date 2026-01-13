@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>GALERÍA DE FOTOS COMO UN TRIBUTO A LA PALMA</h1><br><br>
+    <img src="inicial.jpg" alt="" width="888" height="500"><br><br>
+    <input type="button" value="Izquierda" style="width: 440px;" onclick="cambio(this.value);"> <input type="button" style="width: 440px;" value="Derecha" onclick="cambio(this.value);"><br><br>
+    <script>
+      var fotoactual="inicial.jpg";
+      var contador=0;
+      var listaimages=["imagen-0","imagen-1","imagen-2","imagen-3","imagen-4","imagen-5","imagen-6","imagen-7","imagen-8","imagen-9"];
+      function cambio(sentido){
+          
+        switch (sentido){
+            case "Izquierda":
+            if (contador==0){
+                contador=listaimages.length-1;
+            }else{
+                contador-=1
+            }
+            //alert(contador);
+            document.getElementsByTagName('img')[0].src=listaimages[contador] + ".jpg";
+            break;
+            case "Derecha":
+            if (contador==listaimages.length-1){
+                contador=0
+            }else{
+                contador+=1;
+            }
+            //alert(contador);
+            document.getElementsByTagName('img')[0].src="imagen-" + contador + ".jpg";
+            break;
+            default:
+            alert("Ha ocurrido un funcionamiento anómalo");
+            break;
+        }
+
+      }  
+    </script>
+
+</body>
+</html>

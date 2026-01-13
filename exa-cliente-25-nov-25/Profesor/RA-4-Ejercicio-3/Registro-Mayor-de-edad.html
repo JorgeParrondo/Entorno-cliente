@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creando objeto usuario</title>
+</head>
+<body>
+    <h1>Registro de clientes</h1><br><br>
+    <label for="">Nombre</label><input type="text" name="datos"><br><br>
+    <label for="">Apellidos</label><input type="text" name="datos"><br><br>
+    <label for="">DNI:</label><input type="text" name="datos"><br><br>
+    <label for="">Fecha Nacimiento:</label><input type="text" name="datos"><br><br>
+    <h2>¿Es mayos de edad?</h2>
+    <textarea ></textarea><br><br>
+    <input type="button" value="REGISTRARME" onclick="registrando()">
+    <script>
+        var cliente;
+        class Usuario{
+            constructor(nombre,apellidos,dni,fechanacimiento){
+                this.nombre=nombre;
+                this.apellidos=apellidos;
+                this.dni=dni;
+                this.fechanacimiento=fechanacimiento;
+            }
+        }
+        function registrando(){
+            let cjanombre=document.getElementsByName("datos")[0].value;
+            let cjaapellidos=document.getElementsByName("datos")[1].value;
+            let cjadni=document.getElementsByName("datos")[2].value;
+            let cjafecha=document.getElementsByName("datos")[3].value;
+            cliente=new Usuario(cjanombre,cjaapellidos,cjadni,cjafecha);
+            checkmayordeedad(cjafecha)
+            
+
+        }
+        function checkmayordeedad(borndate){
+            let dieciochoañosmsg=(18*365 + 4)*24*60*60*1000;
+            console.log(dieciochoañosmsg);
+            let fechanaci=new Date(borndate);
+            console.log(fechanaci.getTime());
+            let hoy=new Date();
+            console.log(hoy.getTime());
+            let diferencia=hoy.getTime()-fechanaci.getTime();
+            if (diferencia < dieciochoañosmsg){
+                document.getElementsByTagName('textarea')[0].value='Sr o Sra. ' + cliente.nombre + + "  " + cliente.apellidos + ' lamentablemente no se le puede registrar \n por ser menor de edad'
+            }
+            else{
+                document.getElementsByTagName('textarea')[0].value='Sr o Sra. ' + cliente.nombre + + "  " + cliente.apellidos + ' Bienvenido a nuestra aplicación'
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
