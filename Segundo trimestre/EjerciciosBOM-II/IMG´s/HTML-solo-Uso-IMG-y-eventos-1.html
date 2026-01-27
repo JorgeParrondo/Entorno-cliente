@@ -13,6 +13,15 @@
             <tr><td>Mueve <A HREF="departamento.html"  onMouseout="imagenOn('img1')">sobre-esto</A></td><td>Ahora <A HREF="Equipo.html"  onMouseout="imagenOn('img2')" >sobre-aqui</A></td></tr>
         </table>
     </center>
-    
+<script>
+function imagenOff(nombreImg) {
+document.images[nombreImg].src = "off.jpg";
+}
+
+
+function imagenOn(nombreImg) {
+document.images[nombreImg].src = "on.jpg";
+}
+</script>
 </body>
 </html>
