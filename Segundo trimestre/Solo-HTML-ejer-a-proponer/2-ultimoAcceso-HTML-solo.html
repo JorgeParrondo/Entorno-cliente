@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha y Hora último acceso</title>
+</head>
+<body>
+	<form id="form">
+		Nombre:
+		<input type="text" id="nom">
+		<br>
+		Apellido:
+		<input type="text" id="apellido">
+		<br>
+		<input type="button" value="Guardar datos" onclick="guardarUltimoAcceso()">
+		<input type="button" value="Recordar ultimo acceso" onclick="mostrarUltimoAcceso()">
+	</form>
+	<div id="mensaje">
+	</div>
+	<script>
+		function guardarUltimoAcceso(){
+			var nombre = document.getElementById("nom").value;
+			var apellido = document.getElementById("apellido").value;
+			var ultimoAcceso = new Date();
+            
+			localStorage.setItem("nombre", nombre);
+            localStorage.setItem("apellido", apellido);
+            localStorage.setItem("ultimoAcceso", ultimoAcceso);
+		}
+
+		function mostrarUltimoAcceso(){
+			
+			var nombre = localStorage.getItem("nombre");
+			var apellido = localStorage.getItem("apellido");
+			var ultimoAcceso = localStorage.getItem("ultimoAcceso");
+			alert(nombre + " " + apellido + ", tu ultimo acceso fue el " + ultimoAcceso);
+		}
+		
+	</script>
+</body>
+</html>
