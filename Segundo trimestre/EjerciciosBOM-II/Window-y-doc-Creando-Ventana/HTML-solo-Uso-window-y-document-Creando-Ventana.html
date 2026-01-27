@@ -25,3 +25,40 @@
     
 </body>
 </html>
+<script>
+    function mostrar(num){
+        if(num == 1){
+            document.getElementsByTagName('textarea')[0].value = "Se mostrará con colorines(gay)";
+        }
+        if(num == 0){
+            document.getElementsByTagName('textarea')[0].value = "Mola mazo, sin colores";
+        }
+    }
+    function pintapagina(valor){
+        pagina = window.open("","maricon quien lo lea", "width=250,height=200");
+        pagina.document.write(`
+            <html>
+            <head>
+            <title>Documento</title>
+            </head>
+            <body id="cuerpo">
+            <h1>Documento generado</h1>
+            <p>Contenido del documento</p>
+            </body>
+           
+                `);
+        if (valor === 1) {
+        pagina.document.write(`
+            <style>
+            body {
+                background-color: lightblue;
+                color: darkred;
+             }
+            </style>
+             </html>
+        `);
+        }else{
+            pagina.document.write(`</html>`)
+        }
+        }
+</script>
