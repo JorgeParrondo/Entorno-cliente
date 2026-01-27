@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegador</title>
+</head>
+<body>
+    <h1>Que navegador usas?</h1>
+    <button onclick="mostrarNav()" value="Mostrar">Mostrar</button>
+</body>
+</html>
+<script>
+function mostrarNav() {
+let nombreNavegador = navigator.userAgent;
+let pos = nombreNavegador.indexOf(0);
+
+
+if (pos !== -1) {
+let resultado = nombreNavegador.slice(0, pos);
+alert("Estas usando: " + resultado);
+} else {
+alert("Navegador no detectado");
+}
+}
+
+</script>
