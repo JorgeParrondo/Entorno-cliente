@@ -29,10 +29,53 @@ br {clear: left;} input[type="submit"], input[type="reset"] {margin:25px 5px 10p
         <input type="button" value="Enviar" onclick='informe()'/> <input type="reset" value="Cancelar"/>
     </div>
     <div style="float:left;">
-    <div id="encuadraImagen"><img id='rostro' src='' alt="?"></div><br/>
+    <div id="encuadraImagen"><img id='rostro' src='' alt="?" height="100" witdh= "75"></div><br/>
     <div id="datos" style="float:left;"><h4> Datos introducidos: </h4><textarea id='datosfinales' cols='35' rows='12'></textarea></div>
     </form>
     </div>
 
 </body>
 </html>
+<script>
+    function informe(){
+    //CONTROL RADIO (FOTOS)
+     var tratamiento = document.getElementsByName('tratamiento');
+     var tratar = "";
+     for(i = 0; i < tratamiento.length ; i++){
+        if (tratamiento[i].checked){
+            tratar =  tratamiento[i].value;
+        }
+     }
+    if(tratar == "Sr."){
+         document.getElementById('rostro').src = 'lebron.png';
+     }else{
+         document.getElementById('rostro').src = 'señora.jpg';
+    }
+    
+    //CONTROL INPUTS TEXT
+    var nombre = document.getElementById('nombre').value;
+    var apellidos = document.getElementById('apellidos').value;
+    var direccion1 = document.getElementById('direccion1').value;
+    
+    //CONTROL SELECT
+    var ciudad = document.getElementById('ciudad').value;
+    
+    //CONTROL CHECKBOX
+    var preferencias = document.getElementsByName("preferencias");
+    var prefRecogido = [];
+    for(j = 0; j < preferencias.length; j++){
+        if(preferencias[j].checked){
+            prefRecogido.push(preferencias[j].checked);
+        }
+    }
+    
+
+    var resultado = "Pues mira eres el mongolito/a de aqui (que feo), y te llamas " 
+    + nombre + apellidos + " nombre de pringado" +
+    ", bueno tu direccion es " + direccion1 + " en la ciudad "+ ciudad +  " (espero que hayas seleccionado una) " +
+    "yyyy por ultimo te molan: " + prefRecogido.join(", ");
+
+    document.getElementById('datosfinales').value = resultado;
+    
+    }
+</script>
