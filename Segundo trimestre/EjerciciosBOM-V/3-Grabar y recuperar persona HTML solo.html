@@ -19,10 +19,59 @@
 	Provincia:
 	<input type="text" name="provincia">
 	<br>
-	<button id="guardar">Guardar</button>
-	<button id="recuperar">Recuperar</button>
-	<button id="borrarSesion">Borrar datos de sesion</button>
-	<button id="reset">Borrar campos</button>
+	<button id="guardar" onclick="guardarDatos()">Guardar</button>
+	<button id="recuperar" onclick="recuperarDatos()">Recuperar</button>
+	<button id="borrarSesion" onclick="borrarDatos()">Borrar datos de sesion</button>
+	<button id="reset" onclick ="reseteoFormulario()">Borrar campos</button>
 
 </body>
 </html>
+<script>
+	class Cliente {
+		 constructor(nombre, apellidos, movil, provincia){
+           this.nombre = nombre;
+		   this.apellidos = apellidos;
+		   this.movil = movil;
+		   this.provincia = provincia;
+		}
+	}
+
+
+    function  guardarDatos(){
+		var nombre = document.getElementById('nombre').value;
+		var apellidos =  document.getElementById('apellidos').value
+		var movil = document.getElementsByName('movil')[0].value;
+		var provincia = document.getElementsByName('provincia')[0].value;
+
+		
+		var cli = new Cliente(nombre, apellidos, movil, provincia);
+		alert('Se han guardado los datos del usuario ' + cli.nombre + " " + cli.apellidos);
+		localStorage.setItem(movil,JSON.stringify(cli));        
+	}
+
+    function recuperarDatos(){
+		numeroMovil = document.getElementsByName('movil')[0].value;
+        var cli =  JSON.parse(localStorage.getItem(numeroMovil));
+		if(cli == null){
+			alert('No hay ningun cliente registrado con este numero de telefono');
+		}
+		alert('Se han recuperado los datos de ' + cli.nombre + " " + cli.apellidos);
+		
+	}
+    
+	function borrarDatos(){
+		numeroMovil = document.getElementsByName('movil')[0].value;
+        var cli =  JSON.parse(localStorage.getItem(numeroMovil));
+		if(cli == null){
+			alert('No hay ningun cliente registrado con este numero de telefono');
+		}
+		alert('se van a borrar los datos de  ' + cli.nombre + " " + cli.apellidos);
+		localStorage.removeItem(numeroMovil);
+	}
+	function reseteoFormulario(){
+		document.getElementById('nombre').value = " ";
+		document.getElementById('apellidos').value = " ";
+		document.getElementsByName('movil')[0].value = " ";
+		document.getElementsByName('provincia')[0].value = " ";
+	}
+</script>
