@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Registro de Usuario</title>
+
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			background: linear-gradient(120deg, #89f7fe, #66a6ff);
+			margin: 0;
+			padding: 0;
+		}
+
+		.contenedor {
+			width: 500px;
+			margin: 40px auto;
+			background-color: white;
+			padding: 25px;
+			border-radius: 10px;
+			box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+		}
+
+		h1, h2 {
+			text-align: center;
+			color: #333;
+		}
+
+		label {
+			font-weight: bold;
+		}
+
+		input[type="text"],
+		select {
+			width: 100%;
+			padding: 8px;
+			margin-top: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+		}
+
+		input[type="radio"],
+		input[type="checkbox"] {
+			margin-right: 5px;
+		}
+
+		.grupo {
+			margin-bottom: 15px;
+		}
+
+		.botones {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		button {
+			flex: 1;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-weight: bold;
+			background-color: #66a6ff;
+			color: white;
+		}
+
+		button:hover {
+			background-color: #558de8;
+		}
+
+		hr {
+			margin: 25px 0;
+		}
+
+		.navegacion button {
+			background-color: #ff9f43;
+		}
+
+		.navegacion button:hover {
+			background-color: #e68a2e;
+		}
+
+		.timer {
+			text-align: center;
+		}
+
+		#contador {
+			font-size: 18px;
+			font-weight: bold;
+			margin: 10px 0;
+			color: #444;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="contenedor">
+
+		<h1>Formulario de Registro</h1>
+
+		<form id="formRegistro">
+
+			<div class="grupo">
+				<label>Nombre:</label>
+				<input type="text" id="nombre">
+			</div>
+
+			<div class="grupo">
+				<label>Sexo:</label><br>
+				<input type="radio" name="sexo" value="Hombre"> Hombre<br>
+				<input type="radio" name="sexo" value="Mujer"> Mujer<br>
+				<input type="radio" name="sexo" value="Otro"> Otro
+			</div>
+      
+			<div class="grupo">
+				<label>Provincia:</label>
+				<select id="provincia">
+					<option value="">-- Selecciona --</option>
+					<option value="Madrid">Madrid</option>
+					<option value="Barcelona">Barcelona</option>
+					<option value="Valencia">Valencia</option>
+					<option value="Sevilla">Sevilla</option>
+				</select>
+			</div>
+			<div class="grupo">
+			    <input type="checkbox" name="intereses" value="Deporte"> Deporte<br>
+				<input type="checkbox" name="intereses" value="Música"> Música<br>
+				<input type="checkbox" name="intereses" value="Tecnología"> Tecnología
+			</div>
+			<div class="botones">
+				<button type="button" id="btnGuardar" onclick="guardarDatos()">Guardar datos</button>
+				<button type="button" id="btnMostrar" onclick="mostrarDatos()">Mostrar datos</button>
+				<button type="button" id="btnVentana" onclick="ventanadeUser()">Abrir ventana</button>
+				<button type="reset">Resetear</button>
+			</div>
+
+		</form>
+
+		<hr>
+
+		<div class="navegacion">
+			<h2>Navegación</h2>
+			<div class="botones">
+				<button id="btnAtras">Ir atrás</button>
+				<button id="btnAdelante">Ir adelante</button>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="timer">
+			<h2>Temporizador</h2>
+			<p id="contador"></p>
+			<div class="botones">
+				<button id="btnIniciarTimer" onclick="empezarTimer()">Iniciar contador</button>
+				<button id="btnPararTimer" onclick = "pararTimer()">Parar contador</button>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+<script>
+	let timer;
+	let contador = 0;
+	class Usuario{
+		constructor(nombre, sexo, provincia, preferencias){
+			this.nombre = nombre;
+			this.sexo = sexo;
+			this.provincia = provincia;
+			this.preferencias = preferencias;
+		}
+	}
+	function guardarDatos(){
+       var nombre = document.getElementById('nombre').value;
+
+       var sexo = document.getElementsByName('sexo');
+	   var sexoElegido =  "";
+
+	   for(i = 0; i < sexo.length; i++){
+		 if(sexo[i].checked){
+			sexoElegido = sexo[i].value;
+		 }
+	   }
+	   
+	   var provincia = document.getElementById('provincia').value;
+   
+       var preferencias = document.getElementsByName('intereses');
+	   var preferenciasElegidas = [];
+
+	   for(i = 0; i < preferencias.length; i++){
+		 if(preferencias[i].checked){
+			preferenciasElegidas.push(preferencias[i].value);
+		 }
+	   }
+	  var usr = new Usuario(nombre,sexoElegido,provincia,preferenciasElegidas);
+	  alert('Se han guardado tus datos ' + usr.nombre + " ---> " + usr.sexo + usr.provincia + usr.preferencias);
+	  usuario = JSON.stringify(usr);
+	  localStorage.setItem(nombre, usuario);
+	}
+	function mostrarDatos(){
+	 var nombre = document.getElementById('nombre').value;
+	 var user = localStorage.getItem(nombre);
+	 var usr = JSON.parse(user);
+     alert('tus datos son estos nigga ---> '  + usr.nombre + " ---> " + usr.sexo + usr.provincia + usr.preferencias);
+	}
+	function ventanadeUser(){
+		ventana = window.open("", "Datos del usuario" , "height = 500 , width = 500");
+		ventana.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Datos del Usuario</title>
+        </head>
+        <body>
+            <h1>Tus datos</h1>
+        </body>
+        </html>
+    `);
+	}
+	function empezarTimer(){
+		contador = 1;
+        timer = setInterval(function(){
+           var mensaje = "han pasado " + contador + " segundos";
+		   contador++;
+		   document.getElementById('contador').innerText = mensaje;
+		}, 1000);
+	}
+	function pararTimer(){
+		clearInterval(timer);
+	}
+</script>
