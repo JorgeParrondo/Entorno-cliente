@@ -126,7 +126,7 @@
 				</select>
 			</div>
 			<div class="grupo">
-			    <input type="checkbox" name="intereses" value="Deporte"> Deporte<br>
+			    <input type="checkbox" name="intereses" value="Deporte" checked> Deporte<br>
 				<input type="checkbox" name="intereses" value="Música"> Música<br>
 				<input type="checkbox" name="intereses" value="Tecnología"> Tecnología
 			</div>
@@ -144,8 +144,8 @@
 		<div class="navegacion">
 			<h2>Navegación</h2>
 			<div class="botones">
-				<button id="btnAtras">Ir atrás</button>
-				<button id="btnAdelante">Ir adelante</button>
+				<button id="btnAtras" onclick="Historial(0)">Ir atrás</button>
+				<button id="btnAdelante" onclick="Historial(1)">Ir adelante</button>
 			</div>
 		</div>
 
@@ -232,5 +232,12 @@
 	}
 	function pararTimer(){
 		clearInterval(timer);
+	}
+	function Historial(num){
+		if(num == 0){
+			history.back();
+		}else if(num == 1){
+			history.forward();
+		}
 	}
 </script>
