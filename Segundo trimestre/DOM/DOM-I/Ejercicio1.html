@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Ejemplo uso Attributes</title>
+  <script type="text/javascript">   
+    function listAttributes(){
+        var parrafo = document.getElementById("parrafo");
+        var resultado = "";
+
+        if(parrafo.hasAttributes()){
+          var atributos =  parrafo.attributes;
+
+          for(var i = 0; i < atributos.length; i++){
+            resultado += "ELEMENTO " + i + " --> Nombre: " + atributos[i].name +  "  Valor: " + atributos[i].value + " \n";
+          }
+        }else{
+            resultado = "Pero si esta vaina no tiene atributos colegon";
+        }
+        document.getElementById('result').value = resultado;
+    }
+  </script>
+ </head>
+<body>
+ <p id="parrafo" style="color: green;">Párrafo sencillo</p>
+ <form action="">
+  <p>
+    <input type="button" value="Muestra el nombre y valor del primer attribute" onclick="listAttributes();"><br><br>
+    <textarea name="" id="result" cols="30" rows="10"></textarea>
+  </p>
+ </form></body>
+</html>
