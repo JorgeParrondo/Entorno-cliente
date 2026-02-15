@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+ <p>Haz Click sobre el botón para capturar el "value" del atributo 'onclick' del elemento botón.</p>
+<button onclick="Invocalaf()">Pruébalo</button>
+<p><strong>Nota:</strong> Internet Explorer 8 y anteriores no soportan el método "getNamedItem".</p>
+<p id="demo"></p>
+<script>
+   function Invocalaf(){
+    var resultado = "";
+    var miBoton = document.getElementsByTagName('button')[0];
+    resultado = miBoton.getAttribute('onclick');
+    document.getElementById("demo").innerHTML = resultado;
+   }
+</script>
+</body>
+</html>
