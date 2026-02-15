@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="padre">
+  <p id="child1">Contenido del parrafo ...</p>
+  <p id="child2">Contenido del parrafo ...</p>
+  <p id="child3">Contenido del parrafo ...</p>
+</div>
+<button onclick="Obtenerhijos('padre');">Obtención de hijos</button>
+<div id="resultados"></div>
+
+<script>
+function Obtenerhijos(elementoId) {
+    var padre = document.getElementById(elementoId);
+    var hijos = padre.children;
+    for (var i = 0; i < hijos.length; i++) {
+        hijos[i].style.color = "red";
+    }
+    
+    var nuevoHTML = "";
+    for (var i = 0; i < hijos.length; i++) {
+        nuevoHTML += hijos[i].outerHTML + "\n";
+    }
+    
+    var resultados = document.getElementById("resultados");
+    resultados.innerHTML = "<pre style='color:green;'>" + nuevoHTML + "</pre>";
+}
+</script>
+</body>
+</html>
