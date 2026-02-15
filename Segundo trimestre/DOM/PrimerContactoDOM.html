@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer contacto</title>
+</head>
+<body>
+    <h1>Como se compone el DOM?</h1> <br>
+    Nodos hijos del head <textarea id="HEADA"></textarea><br>
+    Nodos hijos del body <textarea id="BODYA"></textarea><br>
+     <button onclick="muestrame()" value="MUESTRAME EL DOM">Muestrame el dom</button><br>
+</body>
+</html> 
+<script>
+    function muestrame(){
+      var queHayHead = document.head.childNodes;
+      var queHayBody = document.body.childNodes;
+      var bodytexto = "";
+      var headtexto = "";
+
+     for(let i = 0; i < queHayBody.length ; i++){
+        bodytexto +=  " " + queHayBody[i].nodeName;
+     }
+      for(let i = 0; i < queHayHead.length ; i++){
+        headtexto +=  " " + queHayHead[i].nodeName;
+     }
+      document.getElementById('HEADA').value = headtexto;
+      document.getElementById('BODYA').value = bodytexto;
+    }
+</script>
