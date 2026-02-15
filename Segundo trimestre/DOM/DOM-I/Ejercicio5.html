@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternando el estilo de un párrafo</title>
+</head>
+<body>
+<p>Párrafo de texto</p>
+<button type='button' onclick='alternarBorde();'>Alternar borde</button>
+<button type='button' onclick='alternarColor();'>Alternar color</button>
+<button type='button' onclick='alternarFondo();'>Alternar fondo</button>
+ </body>
+</html>
+<script>
+var bordeActivo = false;
+var colorActivo = false;
+var fondoActivo = false;
+
+function alternarBorde() {
+    var parrafo = document.querySelector("p");
+
+    if (bordeActivo) {
+        parrafo.style.border = ""; // quitar borde
+    } else {
+        parrafo.style.border = "2px solid black"; // agregar borde
+    }
+
+    bordeActivo = !bordeActivo;
+}
+
+function alternarColor() {
+    var parrafo = document.querySelector("p");
+
+    if (colorActivo) {
+        parrafo.style.color = ""; // color por defecto
+    } else {
+        parrafo.style.color = "red"; // color de texto
+    }
+
+    colorActivo = !colorActivo;
+}
+
+function alternarFondo() {
+    var parrafo = document.querySelector("p");
+
+    if (fondoActivo) {
+        parrafo.style.backgroundColor = ""; // quitar fondo
+    } else {
+        parrafo.style.backgroundColor = "yellow"; // color de fondo
+    }
+
+    fondoActivo = !fondoActivo;
+}
+</script>
